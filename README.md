@@ -13,23 +13,23 @@ It handles:
 
 ## Table of Contents
 
-### 1. [Architecture & The Tech Stack](#architecture-&-the-tech-stack)
+### 1. [Architecture & The Tech Stack](#architecture--the-tech-stack)
 
-### 2. [Core Modules: Under the Hood](#core-modules:-under-the-hood)
+### 2. [Core Modules: Under the Hood](#core-modules-under-the-hood)
 
-###### 2.1 [The Search Engine & EPSS Enrichment](#the-search-engine-&-epss-enrichment)
+###### 2.1 [The Search Engine & EPSS Enrichment](#1-the-search-engine--epss-enrichment)
 
-###### 2.2 [The PoC Hunter](#the-poc-hunter)
+###### 2.2 [The PoC Hunter](#2-the-poc-hunter)
 
-###### 2.3 [The SBOM Scanner](#the-sbom-scanner)
+###### 2.3 [The SBOM Scanner](#3-the-sbom-scanner)
 
-###### 2.4 [Discord Webhook Alerting](#discord-webhook-alerting)
+###### 2.4 [Discord Webhook Alerting](#4-discord-webhook-alerting)
 
 ### 3. [Local Deployment](#local-deployment)
 
-###### 3.1 [Known Limitations to keep in mind:](#known-limitations-to-keep-in-mind)
+###### 3.1 [Known Limitations to keep in mind](#known-limitations-to-keep-in-mind)
 
-### 5. [License](#license)
+### 4. [License](#license)
 
 ---
 
