@@ -1,0 +1,122 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TISH - The Sauce</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        .license-box {
+            background: var(--app-black);
+            color: #A1A1AA;
+            padding: var(--space-3);
+            border-radius: var(--radius-subtle);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-top: var(--space-4);
+            border: 1px solid var(--app-spicy);
+        }
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-3);
+            margin-top: var(--space-4);
+        }
+        .tech-tag {
+            background: var(--app-glow);
+            color: var(--app-spicy);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TI<span class="text-spicy">SH</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Search</a>
+            <a href="scanner.html" class="nav-link">SBOM Scanner</a>
+            <a href="docs.html" class="nav-link" style="color: var(--app-black); font-weight: 700;">Docs</a>
+            
+        </div>
+    </nav>
+
+    <div class="layout-container section">
+        <header class="hero-header">
+            <h1 class="text-display">The <span>Sauce.</span></h1>
+            <p class="text-body-large">
+                Because nobody likes reading docs. But you're here, so let's make it quick, painless, and a little TISH-y. Here is how to use TISH without losing your mind.
+            </p>
+        </header>
+
+        <section class="about-section">
+            <h2 class="article-title">What is TISH?</h2>
+            <p class="text-body">
+                Let’s be real: looking up vulnerabilities usually feels like reading a tax return. <strong>TISH (btw it stands for Threat Intelligence, Served Hot)</strong> was built to change that. I grab the scariest data on the web and serve it in a way that actually makes sense to human beings. Best part? Everything like your watchlists and webhooks is saved locally in your browser's localStorage. No creepy tracking, just pure threat intel. Whether you're a dev checking your packages or a researcher hunting zero-days, I’ve got your back.
+            </p>
+        </section>
+
+        <hr style="border: 0; border-top: 1px solid var(--app-border); margin: var(--space-5) 0;">
+
+        <section class="functionality-section">
+            <h2 class="article-title">What can it actually do?</h2>
+            <div class="component-grid">
+                <div class="card">
+                    <h3>CVE Deep Dives</h3>
+                    <p class="text-body" style="font-size: 0.95rem;">We pull directly from the <strong>NVD (NIST)</strong> database but add the "spicy" bits: EPSS exploit probabilities and CISA's "Known Exploited" warnings. I'll also scour the GitHub API to find you community Proof of Concepts (PoCs).</p>
+                </div>
+                <div class="card">
+                    <h3>SBOM Scanning</h3>
+                    <p class="text-body" style="font-size: 0.95rem;">Paste your <code>package.json</code> or <code>requirements.txt</code>. I hit the <strong>OSV.dev</strong> API to tell you exactly which dependency is about to ruin your weekend and provide a text-based. I'll sometimes even suggest exact version updates to fix the mess.</p>
+                </div>
+                <div class="card">
+                    <h3>Malware/Actor Search</h3>
+                    <p class="text-body" style="font-size: 0.95rem;">Not every threat is a CVE. I query a curated malware/actor databank via the <strong>MITRE ATT&CK</strong> malware and threat actor database to give you the backstories on the world's nastiest digital bugs and the people who did it.</p>
+                </div>
+                <div class="card">
+                    <h3>Alerts</h3>
+                    <p class="text-body" style="font-size: 0.95rem;">Hit the "Alerts" button in the nav. Drop your Discord webhook URL in there. Now, whenever the Live Threat Feed catches a new CVE or something on your Watchlist updates, TISH will slide right into your Discord channel with a styled alert.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section" style="margin-top: var(--space-5);">
+            <h2 class="article-title">Under the Hood</h2>
+            <p class="text-body">I didn't reinvent the wheel—I just polished it. TISH runs on some incredible open-source tech and public APIs:</p>
+            <ul class="text-body" style="list-style: none; padding: 0;">
+                <li><span class="tech-tag">NVD API 2.0</span> — The source of truth for vulnerabilities.</li>
+                <li><span class="tech-tag">FIRST.org EPSS</span> — The crystal ball for exploit prediction.</li>
+                <li>️<span class="tech-tag">OSV.dev</span> — Google’s(i know it's Google but this was the best i could find) open-source vulnerability distributed database.</li>
+                <li><span class="tech-tag">Geist & Geist Mono</span> — The sexiest fonts known to mankind.</li>
+                <li><span class="tech-tag">DOMPurify</span> — Keeping your browser safe from nasty XSS injections.</li>
+            </ul>
+        </section>
+
+        <section class="open-source-section" style="margin-top: var(--space-5);">
+            <h2 class="article-title">Open Source & Proud</h2>
+            <p class="text-body">
+                TISH is built on the belief that security info should be free, fast, and open. That’s why the whole project is licensed under the <strong>GNU GPL v3</strong>. So you can host your own version of TISH and I actually encourage you(just attribute me, well that's optional).
+            </p>
+            
+            <div class="license-box">
+                <p><strong>GNU GENERAL PUBLIC LICENSE v3</strong></p>
+                <p style="margin-top: 10px;">
+                    Copyright (C) 2026 nulsie.<br>
+                    This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation.<br><br>
+                    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. <a href="https://www.gnu.org/licenses/gpl-3.0.txt" style="color: #A1A1AA;">Read the full...</a>
+                </p>
+            </div>
+            
+            <p class="text-body" style="margin-top: var(--space-3); font-style: italic; font-size: 0.9rem;">
+                Basically: You can fork it, tweak it, and share it—just keep it open and give us a shout-out. Stay spicy.
+            </p>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: var(--space-5); color: var(--app-gray); font-size: 0.85rem;">
+        TISH // By <a href="https://nulsie.github.io/w" class="text-spicy">nulsie</a>
+    </footer>
+</body>
+</html>

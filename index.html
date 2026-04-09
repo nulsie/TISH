@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TISH</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">TI<span class="text-spicy">SH</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link" style="color: var(--app-black); font-weight: 700;">Search</a>
+            <a href="scanner.html" class="nav-link">SBOM Scanner</a>
+            <a href="docs.html" class="nav-link">Docs</a>
+            <button id="navWatchlistBtn" class="nav-link" style="background:none; border:none; font-family:inherit; cursor:pointer;">
+        Alerts <span id="watchCount" style="background:var(--app-spicy); color:white; border-radius:10px; padding:2px 8px; font-size:0.75rem; margin-left:4px;">0</span>
+    </button>
+        </div>
+    </nav>
+
+    <div class="layout-container section">
+        <header class="hero-header">
+            <h1 class="text-display">Threat Intelligence, <br><span>Served Hot.</span></h1>
+            <p class="text-body-large">
+                Search the history of openly disclosed vulnerabilities for any service, mapping the threat landscape in real-time.
+            </p>
+        </header>
+
+       <div class="tabs-container">
+            <button id="tab-cve" class="btn btn-primary">Vulnerabilities</button>
+            <button id="tab-malware" class="btn btn-secondary">Malware and Actors</button>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" class="input-field" placeholder="e.g., Apache Tomcat, OpenSSH, Windows..." autofocus>
+            <button id="searchBtn" class="btn btn-primary">Execute</button>
+        </div>
+
+        <div id="statusMessage" class="hidden status-text pulse-text"></div>
+        
+        
+        
+        <div class="results-layout">
+            <aside id="filterSidebar" class="filter-sidebar hidden">
+                <div class="filter-header">
+                    <h3>Filters</h3>
+                    <button id="resetFiltersBtn" class="btn-text">Reset</button>
+                </div>
+                
+                <div class="filter-group">
+                    <h4>CVSS Severity</h4>
+                    <label class="checkbox-label"><input type="checkbox" id="filter-critical" value="CRITICAL" checked> <span class="tag tag-critical">Critical</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="filter-high" value="HIGH" checked> <span class="tag tag-high">High</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="filter-medium" value="MEDIUM" checked> <span class="tag tag-medium">Medium</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="filter-low" value="LOW" checked> <span class="tag tag-low">Low / Unscored</span></label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>CISA KEV</h4>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="filter-kev">
+                        <div class="toggle-slider"></div>
+                        <span class="toggle-label">Known Exploited Only</span>
+                    </label>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Min EPSS Score</h4>
+                    <div class="slider-container">
+                        <input type="range" id="filter-epss" min="0" max="100" value="0" class="range-slider">
+                        <span id="epss-value" class="range-value">0%</span>
+                    </div>
+                </div>
+            </aside>
+
+            <div id="resultsContainer" class="results-grid" style="flex: 1;"></div>
+        </div>
+        
+ <div class="main-content-wrapper">
+    <aside class="hot-feed">
+        <div class="feed-header">
+            <h3>Live Threat Feed</h3>
+            <span class="pulse-icon"></span>
+        </div>
+        <div id="liveFeedContent" class="feed-items"></div>
+    </aside>
+
+        <div id="articleContainer" class="hidden">
+            <button id="backToResultsBtn" class="btn btn-back">
+                &larr; Back to Results
+            </button>
+            <div class="card article-card">
+                <h2 id="articleTitle" class="article-title"></h2>
+                <div id="articleContent" class="text-body wiki-content"></div>
+            </div>
+        </div>
+    </div>
+        <footer style="text-align: center; padding: var(--space-5); color: var(--app-gray); font-size: 0.85rem;">
+        TISH // By <a href="https://nulsie.github.io/w" class="text-spicy">nulsie</a>
+    </footer>
+    <div id="alertsModal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Watchlist & Discord Webhooks</h2>
+            <button id="closeModalBtn" class="btn-text">&times;</button>
+        </div>
+        
+        <div class="webhook-config">
+            <p class="text-body" style="font-size: 0.9rem;">Receive alerts in Discord when new CVEs hit the live feed or when tracked items update.</p>
+            <label style="font-weight:600; font-size:0.85rem; color:var(--app-gray);">Discord Webhook URL</label>
+            <div style="display:flex; gap:8px; margin-top:4px;">
+                <input type="password" id="webhookInput" class="input-field" style="border:1px solid var(--app-border);" placeholder="https://discord.com/api/webhooks/...">
+                <button id="saveWebhookBtn" class="btn btn-primary">Save & Test</button>
+            </div>
+        </div>
+
+        <h3 style="margin-top:24px; margin-bottom:12px;">Tracked Items</h3>
+        <div id="watchlistContainer" class="feed-items" style="grid-template-columns: 1fr;">
+            </div>
+    </div>
+</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
